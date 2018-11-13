@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<p>Use this area to provide additional information.</p>
+
+@section Scripts{
+    <script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute('reCAPTCHA_site_key', { action: 'about' })
+            .then(function (token) {
+                $.getJSON("/Home/RecaptchaV3Vverify?token=" + token, function (data) {
+                    console.log(data);
+                });
+            });
+        });
+    </script>
+}
